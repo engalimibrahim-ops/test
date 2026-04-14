@@ -209,7 +209,13 @@ gtag('config', 'G-8EB2DDW2MC');
                     if (json.success) {
                         setStatus('Verified ✓ Redirecting to download...');
                         // Delay increased to 4 seconds
-                        setTimeout(() => window.location.href = DOWNLOAD_URL, 4000);
+                        
+                        setTimeout(() => {
+                                gtag('event', 'download_apk', {
+                                    event_category: 'engagement',
+                                    event_label: 'Cash Mobile App'
+                                     });
+                            window.location.href = DOWNLOAD_URL}, 4000);
                     } else {
                         setStatus('Verification failed. Try again later.');
                     }
